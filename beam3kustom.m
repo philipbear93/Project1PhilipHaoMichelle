@@ -70,17 +70,10 @@ if strcmp(mode,'generate')
   
           %There have to be 5 elements for this element's
           %definition (above)
-  if length(b)==5
-      element(elnum).nodes=b(1:3);
-      %If the user puts the middle node in the wrong place, tell them.
-      if norm((nodes(b(1),:)+nodes(b(2),:))/2-nodes(b(3),:))/ ...
-              norm(nodes(b(1),:)-nodes(b(2),:))>.001
-          disp(['WARNING: Node ' num2str(b(3)) ...
-                ' is not in the middle of element ' ...
-                num2str(elnum) ' on line ' num2str(curlineno) '.'])
-      end
-      element(elnum).properties=b(5);
-      element(elnum).point=b(4);
+  if length(b)==4
+      element(elnum).nodes=b(1:2);
+      element(elnum).properties=b(4);
+      element(elnum).point=b(3);
   else 
 	  b
       %There have to be five numbers on a line defining the
@@ -133,22 +126,18 @@ if strcmp(mode,'make')||strcmp(mode,'istrainforces')
                                               % need for your use. 
   
 % 
-  if length(bprops)==15
+  if length(bprops)==11
       E=bprops(1);
       G=bprops(2);
       rho=bprops(3);
       A1=bprops(4);
       A2=bprops(5);
-      A3=bprops(6);
-      J1=bprops(7);
-      J2=bprops(8);
-      J3=bprops(9);
-      Izz1=bprops(10);
-      Izz2=bprops(11);
-      Izz3=bprops(12);
-      Iyy1=bprops(13);
-      Iyy2=bprops(14);
-      Iyy3=bprops(15);
+      J1=bprops(6);
+      J2=bprops(7);
+      Izz1=bprops(8);
+      Izz2=bprops(9);
+      Iyy1=bprops(10);
+      Iyy2=bprops(11);
   else
       warndlg(['The number of material properties set for ' ...
                'this element (' num2str(length(bprops)) ') isn''t ' ...
@@ -179,12 +168,9 @@ if strcmp(mode,'make')
   x2=nodes(bnodes(2),1);
   y2=nodes(bnodes(2),2);
   z2=nodes(bnodes(2),3);
-  x3=nodes(bnodes(3),1);
-  y3=nodes(bnodes(3),2);
-  z3=nodes(bnodes(3),3);
-  x4=points(bnodes(4),1);
-  y4=points(bnodes(4),2);
-  z4=points(bnodes(4),3);
+  x3=points(bnodes(3),1);
+  y3=points(bnodes(3),2);
+  z3=points(bnodes(3),3);
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
