@@ -201,7 +201,7 @@ if strcmp(mode,'make')
   rn2d= [0.5];
   numbeamgauss=5; % Number of Gauss points for integration of beam element
   [bgpts,bgpw]=gauss(numbeamgauss);
-  kb1=zeros(6,6);% For this beam, 3 nodes, 2DOF each, is a 6 by 6
+  kb1=zeros(4,4);% For this beam, 3 nodes, 2DOF each, is a 6 by 6
                  % matrix. 
   kb2=kb1; %Stiffness matrix for the x-z plane beam element. 
   l=norm([x2 y2 z2]-[x1 y1 z1]);
@@ -218,15 +218,14 @@ if strcmp(mode,'make')
 	    'Improper application of element.','replace')
   end
   % This took some work, but provide bounds on other values. 
-  if (Izz1+Iyy1)<(1/2.1*A1^2/pi)|(Izz2+Iyy2)<(1/2.1*A2^2/pi)|(Izz3+Iyy3)<(1/2.1*A3^2/pi)
+  if (Izz1+Iyy1)<(1/2.1*A1^2/pi)|(Izz2+Iyy2)<(1/2.1*A2^2/pi)
     %2.0 would be exact for a circle
     warndlg({['Iyy+Izz for properties number' propertynum ' can''t be as '...
 	      'low as have been given.'];...
 	     'Nonphysical properties.'},['Impossible cross sectional' ...
 		    ' properties'],'replace')
   end
-  slenderness=min([sqrt((Izz1+Iyy1)/A1) sqrt((Izz2+Iyy2)/A2) ...
-		   sqrt((Izz3+Iyy3)/A3)  ])/l;
+  slenderness=min([sqrt((Izz1+Iyy1)/A1) sqrt((Izz2+Iyy2)/A2)])/l;
   % Check if this is a beam or something so thin that its really a
   % string. 
   if slenderness<.002
@@ -246,10 +245,8 @@ if strcmp(mode,'make')
                                            %matrix. (at gauss point)
              polyval(bn2dd,bgpts(i))/Jac;
              polyval(bn3dd,bgpts(i))/Jac^2;
-             polyval(bn4dd,bgpts(i))/Jac;
-             polyval(bn5dd,bgpts(i))/Jac^2;
-             polyval(bn6dd,bgpts(i))/Jac];
-    Izz=polyval(rn1*Izz1+rn2*Izz2+rn3*Izz3,bgpts(i));%Find Izz at
+             polyval(bn4dd,bgpts(i))/Jac];
+    Izz=polyval(rn1*Izz1+rn2*Izz2,bgpts(i));%Find Izz at
                                                      %Gauss point
     kb1=kb1+bgpw(i)*beamsfs*beamsfs'*Izz*E*Jac;%This is the Gauss
                                                %integration part. 
@@ -259,39 +256,33 @@ if strcmp(mode,'make')
     beamsfs=[polyval(bn1dd,bgpts(i))/Jac^2;
              -polyval(bn2dd,bgpts(i))/Jac;
              polyval(bn3dd,bgpts(i))/Jac^2;
-             -polyval(bn4dd,bgpts(i))/Jac;
-             polyval(bn5dd,bgpts(i))/Jac^2;
-             -polyval(bn6dd,bgpts(i))/Jac];
-    Iyy=polyval(rn1*Iyy1+rn2*Iyy2+rn3*Iyy3,bgpts(i));
+             -polyval(bn4dd,bgpts(i))/Jac];
+    Iyy=polyval(rn1*Iyy1+rn2*Iyy2,bgpts(i));
     kb2=kb2+bgpw(i)*beamsfs*beamsfs'*Iyy*E*Jac;
   end
   
   % Local Extension in x, torsion about x
   numrodgauss=3;% Number of points to use for gauss point integration
   [rgpts,rgpw]=gauss(numrodgauss);
-  krod=zeros(3,3);
-  ktor=zeros(3,3);
+  krod=zeros(2,2);
+  ktor=zeros(2,2);
   for i=1:numrodgauss
     rodsfs=[polyval(rn1d,rgpts(i))/Jac;
-            polyval(rn2d,rgpts(i))/Jac;
-            polyval(rn3d,rgpts(i))/Jac];
-    if (J1>(Iyy1+Izz1))|(J2>(Iyy2+Izz2))|(J3>(Iyy3+Izz3))
+            polyval(rn2d,rgpts(i))/Jac];
+    if (J1>(Iyy1+Izz1))|(J2>(Iyy2+Izz2))
       if (J1>(Iyy1+Izz1))
 	disp('WARNING: J1 must be <= Iyy1+Izz1')%More checks for reality
       end
       if (J2>(Iyy2+Izz2))
 	disp('WARNING: J2 must be <= Iyy2+Izz2')%More checks for reality
       end
-      if (J3>(Iyy3+Izz3))
-	disp('WARNING: J3 must be <= Iyy3+Izz3')%More checks for reality
-      end
       disp(['Error in element properties number '... 
 	    num2str(element(elnum).properties) ...
 	    'used by element ' num2str(elnum) ' on line'...
 	    num2str(element(elnum).lineno) '.'])
     end
-    J=polyval(rn1*J1+rn2*J2+rn3*J3,bgpts(i));% J at gauss point.
-    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));% A at gauss point
+    J=polyval(rn1*J1+rn2*J2,bgpts(i));% J at gauss point.
+    A=polyval(rn1*A1+rn2*A2,bgpts(i));% A at gauss point
     krod=krod+rgpw(i)*rodsfs*rodsfs'*A*E*Jac;%Since the shape
                                              %functions and Gauss
                                              %points are the same,
@@ -309,16 +300,14 @@ if strcmp(mode,'make')
   numbeamgauss=numbeamgauss+3; %Need more gauss points for the mass
                                %matrix. 
   [bgpts,bgpw]=gauss(numbeamgauss);
-  mb1=zeros(6,6); %initialize empty mass matrix
+  mb1=zeros(4,4); %initialize empty mass matrix
   % Local Bending in x-y plane
   for i=1:numbeamgauss
     beamsfs=[polyval(bn1,bgpts(i));
              polyval(bn2,bgpts(i))*Jac;
              polyval(bn3,bgpts(i));
-             polyval(bn4,bgpts(i))*Jac;
-             polyval(bn5,bgpts(i));
-             polyval(bn6,bgpts(i))*Jac];
-    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));
+             polyval(bn4,bgpts(i))*Jac];
+    A=polyval(rn1*A1+rn2*A2,bgpts(i));
     mb1=mb1+bgpw(i)*beamsfs*beamsfs'*rho*A*Jac;%pause, and reflect
                                                %(OK, this was for debugging)
   end
@@ -329,10 +318,8 @@ if strcmp(mode,'make')
     beamsfs=[polyval(bn1,bgpts(i));
              -polyval(bn2,bgpts(i))*Jac;
              polyval(bn3,bgpts(i));
-             -polyval(bn4,bgpts(i))*Jac;
-             polyval(bn5,bgpts(i));
-             -polyval(bn6,bgpts(i))*Jac];
-    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));
+             -polyval(bn4,bgpts(i))*Jac];
+    A=polyval(rn1*A1+rn2*A2,bgpts(i));
     mb2=mb2+bgpw(i)*beamsfs*beamsfs'*rho*A*Jac;
   end
   
@@ -340,14 +327,13 @@ if strcmp(mode,'make')
   numrodgauss=numrodgauss+1; %Need more gauss points for the mass
                              %matrix. 
   [rgpts,rgpw]=gauss(numrodgauss);
-  mrod=zeros(3,3); %initialize empty mass matrix
-  mtor=zeros(3,3);
+  mrod=zeros(2,2); %initialize empty mass matrix
+  mtor=zeros(2,2);
   for i=1:numrodgauss
     rodsfs=[polyval(rn1,rgpts(i));
-            polyval(rn2,rgpts(i));
-            polyval(rn3,rgpts(i))];
-    J=polyval(rn1*(Iyy1+Izz1)+rn2*(Iyy2+Izz2)+rn3*(Iyy3+Izz3),bgpts(i));
-    A=polyval(rn1*A1+rn2*A2+rn3*A3,bgpts(i));
+            polyval(rn2,rgpts(i))];
+    J=polyval(rn1*(Iyy1+Izz1)+rn2*(Iyy2+Izz2),bgpts(i));
+    A=polyval(rn1*A1+rn2*A2,bgpts(i));
     mrod=mrod+rgpw(i)*rodsfs*rodsfs'*A*rho*Jac;
     mtor=mtor+rgpw(i)*rodsfs*rodsfs'*J*rho*Jac;
   end
@@ -355,19 +341,19 @@ if strcmp(mode,'make')
   % Assembling each stiffness matrix into the complete elemental 
   % stiffness matrix. We're just telling the sub-elements to be put
   % into the correct spots for the total element. 
-  k=zeros(18,18);
-  k([2 6 8 12 14 18],[2 6 8 12 14 18])=kb1;
-  k([3 5 9 11 15 17],[3 5 9 11 15 17])=kb2;
-  k([1 7 13],[1 7 13])=krod;
-  k([4 10 16],[4 10 16])=ktor;
+  k=zeros(12,12);
+  k([2 6 8 12],[2 6 8 12])=kb1;
+  k([3 5 9 11],[3 5 9 11])=kb2;
+  k([1 7],[1 7])=krod;
+  k([4 10],[4 10])=ktor;
   
   % Assembling each mass matrix into the complete elemental 
   % mass matrix
-  m=zeros(18,18);
-  m([2 6 8 12 14 18],[2 6 8 12 14 18])=mb1;
-  m([3 5 9 11 15 17],[3 5 9 11 15 17])=mb2;
-  m([1 7 13],[1 7 13])=mrod;
-  m([4 10 16],[4 10 16])=mtor;
+  m=zeros(12,12);
+  m([2 6 8 12],[2 6 8 12])=mb1;
+  m([3 5 9 11],[3 5 9 11])=mb2;
+  m([1 7],[1 7])=mrod;
+  m([4 10],[4 10])=mtor;
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %
