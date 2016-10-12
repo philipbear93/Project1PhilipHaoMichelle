@@ -195,12 +195,10 @@ if strcmp(mode,'make')
   
   % Shape functions in matrix polynomial form (polyval style) for 
   % torsion/rod
-  rn1=[0.5 -.5 0];
-  rn1d=[1 -0.5];
-  rn2=[.5 .5 0];
-  rn2d=[1 0.5];
-  rn3=[-1 0 1];
-  rn3d=[-2 0];
+  rn1=  [-0.5 0.5];
+  rn1d= [-0.5];
+  rn2=  [.5 .5];
+  rn2d= [0.5];
   numbeamgauss=5; % Number of Gauss points for integration of beam element
   [bgpts,bgpw]=gauss(numbeamgauss);
   kb1=zeros(6,6);% For this beam, 3 nodes, 2DOF each, is a 6 by 6
