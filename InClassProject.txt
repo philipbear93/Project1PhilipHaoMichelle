@@ -1,6 +1,5 @@
-During a particular season, the main character did something in the fields.
-
-The main character's name is "Bob". He was helping Farmer Pickles with his team. 
+During a particular season, Bob was helping Farmer Pickles with his team in the fields.
+ 
 
 The tool was happy to help with the task.
 
