@@ -211,7 +211,7 @@ if strcmp(mode,'make')
     DoverL=.1;
   end
   %Euler bernoulli beams must be slender. Warn if not. 
-  if sqrt(A1*4/pi)/l>DoverL|sqrt(A2*4/pi)/l>DoverL|sqrt(A3*4/pi)/l>DoverL
+  if sqrt(A1*4/pi)/l>DoverL|sqrt(A2*4/pi)/l>DoverL
     warndlg({['Dimensions of element ' num2str(elnum) ' using properties '...
 	      propertynum ' are more suitable for a Timoshenko beam.'];...
 	     'radius divided by length is too large'},...
@@ -313,7 +313,7 @@ if strcmp(mode,'make')
   end
   
   % Local Bending in x-z plane
-  mb2=zeros(6,6);
+  mb2=zeros(4,4);
   for i=1:numbeamgauss
     beamsfs=[polyval(bn1,bgpts(i));
              -polyval(bn2,bgpts(i))*Jac;
@@ -363,7 +363,7 @@ if strcmp(mode,'make')
 
   R1=([x2 y2 z2]-[x1 y1 z1]);% Vector along element
   lam1=R1/norm(R1);% Unit direction
-  R2=([x4 y4 z4]-[x1 y1 z1]);% Unit direction to point
+  R2=([x3 y3 z3]-[x1 y1 z1]);% Unit direction to point
   R2perp=R2-dot(R2,lam1)*lam1;% Part of R2 perpendicular to lam1
   udirec=0;
   while norm(R2perp)<10*eps% If R2perp is too small, (point in line
@@ -384,13 +384,13 @@ if strcmp(mode,'make')
   lam2=R2perp/norm(R2perp);
   lam3=cross(lam1,lam2);
   lamloc=[lam1;lam2;lam3];
-  lam=sparse(18,18);
+  lam=sparse(12,12);
   lam(1:3,1:3)=lamloc;
   lam(4:6,4:6)=lamloc;
   lam(7:9,7:9)=lamloc;
   lam(10:12,10:12)=lamloc;
-  lam(13:15,13:15)=lamloc;
-  lam(16:18,16:18)=lamloc;
+%   lam(13:15,13:15)=lamloc;
+%   lam(16:18,16:18)=lamloc;
   
 % $$$     lam=[lamloc z z z z z;
 % $$$          z lamloc z z z z;
@@ -411,8 +411,8 @@ if strcmp(mode,'make')
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  bn1=bnodes(1);bn2=bnodes(2);bn3=bnodes(3);
-  indices=[bn1*6+(-5:0) bn2*6+(-5:0) bn3*6+(-5:0)] ;
+  bn1=bnodes(1);bn2=bnodes(2);
+  indices=[bn1*6+(-5:0) bn2*6+(-5:0)] ;
 
 
   K(indices,indices)=K(indices,indices)+kg;
@@ -423,8 +423,7 @@ if strcmp(mode,'make')
   % appropriate. Just add the pair of node numbers to the lines
   % array and that line will always be drawn.
   numlines=size(lines,1);
-  lines(numlines+1,:)=[bn1 bn3];
-  lines(numlines+2,:)=[bn3 bn2];
+  lines(numlines+1,:)=[bn1 bn2];
 
   
   
