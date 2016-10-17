@@ -1,6 +1,6 @@
 % Derive Shape functions for quadratic beam element
 % For all points, the polynomials N and N' are evaluated.
-% w=a+bx+cx^2+dx^3+ex^4+fx^5
+% w=a+bx+cx^2+dx^3
 b=[1 -1  1 -1; % w(-1) x^n
    1  1  1  1; % w(1) x^n
    0  1 -2  3; % w'(-1) x^n
