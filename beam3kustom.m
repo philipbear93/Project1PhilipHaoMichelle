@@ -201,7 +201,7 @@ if strcmp(mode,'make')
   rn2d= [0.5];
   numbeamgauss=5; % Number of Gauss points for integration of beam element
   [bgpts,bgpw]=gauss(numbeamgauss);
-  kb1=zeros(4,4);% For this beam, 3 nodes, 2DOF each, is a 6 by 6
+  kb1=zeros(4,4);% For this beam, 2 nodes, 2DOF each, is a 4 by 4
                  % matrix. 
   kb2=kb1; %Stiffness matrix for the x-z plane beam element. 
   l=norm([x2 y2 z2]-[x1 y1 z1]);
