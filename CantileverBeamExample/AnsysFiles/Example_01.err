@@ -1,0 +1,107 @@
+/COM,ANSYS RELEASE 12.1    UP20091102       23:01:20    10/19/2016
+
+ *** ERROR ***                           CP =      16.396   TIME= 22:57:59
+ PR__ to NU__ conversion requires a positive value of EY of material 1.  
+
+ *** ERROR ***                           CP =      16.521   TIME= 22:58:37
+ Young's modulus must be positive for material 1 in element 1.           
+
+ *** ERROR ***                           CP =      16.614   TIME= 22:58:43
+ The step data was checked and there were errors found.                  
+  Please check output or errors file ( C:\Users\Hao Li\OneDrive -        
+ Wright State                                                            
+ University\CourseWork\2016_Fall_ME7120_FEAApp\HW\Project1\ANSYS_01\Exam 
+ mple_01.err ) for messages.                                             
+
+ *** WARNING ***                         CP =      26.583   TIME= 23:08:15
+ S is an invalid label.  The ETABLE command is ignored.                  
+
+ *** WARNING ***                         CP =      26.801   TIME= 23:08:26
+ S is an invalid label.  The ETABLE command is ignored.                  
+
+ *** WARNING ***                         CP =      27.004   TIME= 23:08:37
+ S is an invalid label.  The ETABLE command is ignored.                  
+
+ *** WARNING ***                         CP =      39.203   TIME= 23:30:30
+ Element 1 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.219   TIME= 23:30:30
+ Element 2 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.234   TIME= 23:30:31
+ Element 3 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.234   TIME= 23:30:31
+ Element 4 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.265   TIME= 23:30:31
+ Element 5 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.281   TIME= 23:30:31
+ Element 6 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.281   TIME= 23:30:31
+ Element 7 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.281   TIME= 23:30:31
+ Element 8 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.281   TIME= 23:30:31
+ Element 9 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.281   TIME= 23:30:31
+ Element 10 is attached to LINE 1 and cannot be deleted.  Use LCLEAR     
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.687   TIME= 23:31:00
+ Element 1 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.718   TIME= 23:31:00
+ Element 2 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.733   TIME= 23:31:00
+ Element 3 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.733   TIME= 23:31:00
+ Element 4 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      39.749   TIME= 23:31:00
+ Element 5 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.765   TIME= 23:31:00
+ Element 6 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.765   TIME= 23:31:00
+ Element 7 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.765   TIME= 23:31:00
+ Element 8 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.765   TIME= 23:31:00
+ Element 9 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***   SUPPRESSED MESSAGE    CP =      39.765   TIME= 23:31:00
+ Element 10 is attached to LINE 1 and cannot be deleted.  Use LCLEAR     
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =      40.794   TIME= 23:31:40
+ All of the selected lines in the set named on the LMESH command were    
+ already meshed.  Clear associated elements before remeshing.            
