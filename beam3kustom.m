@@ -58,7 +58,7 @@ global surfs
 out=0;
 if strcmp(mode,'numofnodes')
     % This allows a code to find out how many nodes this element has
-    out=3;
+    out=2;
 end
 if strcmp(mode,'generate')
   elnum=c;%When this mode is called, the element number is the 3rd
