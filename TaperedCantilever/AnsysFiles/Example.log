@@ -1,0 +1,12 @@
+/BATCH  
+/COM,ANSYS RELEASE 12.1    UP20091102       21:27:50    10/26/2016
+/input,menust,tmp,'',,,,,,,,,,,,,,,,1   
+/GRA,POWER
+/GST,ON
+/PLO,INFO,3
+/GRO,CURL,ON
+/CPLANE,1   
+/REPLOT,RESIZE  
+WPSTYLE,,,,,,,,0
+FINISH  
+/FILNAME,Example_01,1   

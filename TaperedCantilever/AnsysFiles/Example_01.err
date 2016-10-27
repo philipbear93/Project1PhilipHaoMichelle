@@ -1,0 +1,89 @@
+/COM,ANSYS RELEASE 12.1    UP20091102       21:30:32    10/26/2016
+
+ *** WARNING ***                         CP =       2.746   TIME= 21:31:29
+ Element 1 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.792   TIME= 21:31:29
+ Element 2 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.808   TIME= 21:31:29
+ Element 3 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.839   TIME= 21:31:29
+ Element 4 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.855   TIME= 21:31:29
+ Element 5 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.870   TIME= 21:31:29
+ Element 6 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.886   TIME= 21:31:29
+ Element 7 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.917   TIME= 21:31:29
+ Element 8 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.933   TIME= 21:31:29
+ Element 9 is attached to LINE 1 and cannot be deleted.  Use LCLEAR      
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.933   TIME= 21:31:29
+ Element 10 is attached to LINE 1 and cannot be deleted.  Use LCLEAR     
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       2.948   TIME= 21:31:29
+ Element 11 is attached to LINE 1 and cannot be deleted.  Use LCLEAR     
+ command to delete the elements.                                         
+
+ *** WARNING ***                         CP =       5.476   TIME= 21:41:58
+ All of the selected lines in the set named on the LMESH command were    
+ already meshed.  Clear associated elements before remeshing.            
+
+ *** WARNING ***                         CP =       6.365   TIME= 21:44:10
+ All of the selected lines in the set named on the LMESH command were    
+ already meshed.  Clear associated elements before remeshing.            
+
+ *** WARNING ***                         CP =       7.660   TIME= 21:48:07
+ An increment of 1 is not allowed for the range of 3 TO 1.  The SDELETE  
+ command is ignored.                                                     
+
+ *** WARNING ***                         CP =      12.542   TIME= 21:57:52
+ The requested EPLOT command cannot be executed.                         
+ Either elements do not exist or the selected elements                   
+ are not supported by PowerGraphics.                                     
+ To correct this situation, try selecting different                      
+ elements,etc, or turning off PowerGraphics.                             
+
+ *** WARNING ***                         CP =      12.870   TIME= 21:58:16
+ No constraints have been defined using the D command.                   
+
+ *** ERROR ***                           CP =      13.182   TIME= 21:58:22
+ A small negative equation solver pivot term has been encountered at the 
+ UY degree of freedom of node 5.  Check for an insufficiently            
+ constrained model.                                                      
+
+ *** WARNING ***                         CP =      17.457   TIME= 22:04:17
+ The current solution may have been produced using different model or    
+ boundary condition data than is currently stored.  POST1 results may    
+ be erroneous unless you perform a new solution using the stored data.   
+
+ *** WARNING ***                         CP =      25.959   TIME= 23:06:27
+ The requested section 3 is not a BEAM and can not be displayed in the   
+ BeamTool.                                                               
+
+ *** WARNING ***                         CP =      32.417   TIME= 23:17:25
+ No constraints have been defined using the D command.                   
+
+ *** ERROR ***                           CP =      32.620   TIME= 23:17:26
+ A small negative equation solver pivot term has been encountered at the 
+ UZ degree of freedom of node 5.  Check for an insufficiently            
+ constrained model.                                                      
