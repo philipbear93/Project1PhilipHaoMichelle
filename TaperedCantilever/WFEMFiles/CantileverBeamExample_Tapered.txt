@@ -1,0 +1,121 @@
+variables
+%All of these actions are not the most efficient for this problem.
+
+% Length of the cross section for each node
+t1=0.1
+t9=0.02
+t5=(t1+t9)/2
+t3=(t1+t5)/2
+t2=(t1+t3)/2
+t4=(t3+t5)/2
+t7=(t5+t9)/2
+t6=(t5+t7)/2
+t8=(t7+t9)/2
+
+l=25
+
+% Element 1
+I11=1/12*t1^4
+I12=1/12*t2^4
+J11=0.95*2*I11
+J12=0.95*2*I12
+
+% Element 2
+I21=1/12*t2^4
+I22=1/12*t3^4
+J21=0.95*2*I21
+J22=0.95*2*I22
+
+% Element 3
+I31=1/12*t3^4
+I32=1/12*t4^4
+J31=0.95*2*I31
+J32=0.95*2*I32
+
+% Element 4
+I41=1/12*t4^4
+I42=1/12*t5^4
+J41=0.95*2*I41
+J42=0.95*2*I42
+
+% Element 5
+I51=1/12*t5^4
+I52=1/12*t6^4
+J51=0.95*2*I51
+J52=0.95*2*I52
+
+% Element 6
+I61=1/12*t6^4
+I62=1/12*t7^4
+J61=0.95*2*I61
+J62=0.95*2*I62
+
+% Element 7
+I71=1/12*t7^4
+I72=1/12*t8^4
+J71=0.95*2*I71
+J72=0.95*2*I72
+
+% Element 8
+I81=1/12*t8^4
+I82=1/12*t9^4
+J81=0.95*2*I81
+J82=0.95*2*I82
+
+
+
+element properties
+% Beam format
+% E G rho A1     A2    J1   J2 Ixx1 Ixx2 Iyy1 Iyy2
+steel    t1^2   t2^2   J11 J12 I11   I12 I11   I12
+steel    t2^2   t3^2   J21 J22 I21   I22 I21   I22
+steel    t3^2   t4^2   J31 J32 I31   I32 I31   I32
+steel    t4^2   t5^2   J41 J42 I41   I42 I41   I42
+steel    t5^2   t6^2   J51 J52 I51   I52 I51   I52
+steel    t6^2   t7^2   J61 J62 I61   I62 I61   I62
+steel    t7^2   t8^2   J71 J72 I71   I72 I71   I72
+steel    t8^2   t9^2   J81 J82 I81   I82 I81   I82
+
+
+beam3kustom elements
+%node1 node2 pointnum (beam properties number)
+1 2 1 1
+2 3 1 2
+3 4 1 3
+4 5 1 4
+5 6 1 5
+6 7 1 6
+7 8 1 7
+8 9 1 8
+
+
+
+nodes
+% I can include comment lines
+% node num, x y z, Node number isn't ever stored in nodes matrix
+1 0 0 0 
+2 0 l/8 0 
+3 0 2*l/8 0 
+4 0 3*l/8 0
+5 0 4*l/8 0
+6 0 5*l/8 0
+7 0 6*l/8 0
+8 0 7*l/8 0
+9 0 8*l/8 0
+
+
+points
+1 1 1 1
+
+fix clamp
+1
+% The preceeding put a clamp boundary condition on node 1.
+
+load 
+9 1 1
+
+actions
+staticanalysis
+plotdeformed
+disp(full(X(49:54))) % DOF of Node 9
+disp(size(X))
