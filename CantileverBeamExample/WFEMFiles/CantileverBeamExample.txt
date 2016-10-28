@@ -9,15 +9,10 @@ Iyy2=Ixx2
 J1=0.95*(Ixx1+Iyy1)
 J2=0.95*(Ixx2+Iyy2)
 
-
 element properties
 % Beam format
 % E G rho A1     A2    J1 J2 Ixx1 Ixx2 Iyy1 Iyy2
 steel    t^2     t^2   J1 J2 Ixx1 Ixx2 Iyy1 Iyy2
-%Note that these were defined above. I can use variables in my input file.
-% I also used "steel" as a property. WFEM has some of these predefined. 
-% Run "units" and type "who" to see variables/values available inside your
-% input file
 
 beam3kustom elements
 %node1 node2 pointnum (beam properties number)
@@ -32,9 +27,7 @@ beam3kustom elements
 9 10 1 1
 10 11 1 1
 
-
 nodes
-% I can include comment lines
 % node num, x y z, Node number isn't ever stored in nodes matrix
 1 0 0 0 
 2 0 l/10 0 
@@ -53,7 +46,6 @@ points
 
 fix clamp
 1
-% The preceeding put a clamp boundary condition on node 1.
 
 load 
 11 1 1

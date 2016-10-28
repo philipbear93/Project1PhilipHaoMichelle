@@ -1,7 +1,4 @@
 variables
-%All of these actions are not the most efficient for this problem.
-
-% Length of the cross section for each node
 t1=0.1
 t9=0.02
 t5=(t1+t9)/2
@@ -62,8 +59,6 @@ I82=1/12*t9^4
 J81=0.95*2*I81
 J82=0.95*2*I82
 
-
-
 element properties
 % Beam format
 % E G rho A1     A2    J1   J2 Ixx1 Ixx2 Iyy1 Iyy2
@@ -76,7 +71,6 @@ steel    t6^2   t7^2   J61 J62 I61   I62 I61   I62
 steel    t7^2   t8^2   J71 J72 I71   I72 I71   I72
 steel    t8^2   t9^2   J81 J82 I81   I82 I81   I82
 
-
 beam3kustom elements
 %node1 node2 pointnum (beam properties number)
 1 2 1 1
@@ -87,8 +81,6 @@ beam3kustom elements
 6 7 1 6
 7 8 1 7
 8 9 1 8
-
-
 
 nodes
 % I can include comment lines
@@ -102,7 +94,6 @@ nodes
 7 0 6*l/8 0
 8 0 7*l/8 0
 9 0 8*l/8 0
-
 
 points
 1 1 1 1
@@ -118,4 +109,4 @@ actions
 staticanalysis
 plotdeformed
 disp(full(X(49:54))) % DOF of Node 9
-disp(size(X))
+end
